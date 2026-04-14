@@ -1,0 +1,123 @@
+[
+  {
+    "tipo": "Fuego",
+    "movimientos": [
+      { "nombre": "Lanzallamas", "potencia": 90 },
+      { "nombre": "Ascuas", "potencia": 40 },
+      { "nombre": "Giro Fuego", "potencia": 35 },
+      { "nombre": "Nitrocarga", "potencia": 50 },
+      { "nombre": "Colmillo Ígneo", "potencia": 65 },
+      { "nombre": "Llamarada", "potencia": 110 }
+    ]
+  },
+  {
+    "tipo": "Agua",
+    "movimientos": [
+      { "nombre": "Pistola Agua", "potencia": 40 },
+      { "nombre": "Hidrobomba", "potencia": 110 },
+      { "nombre": "Surf", "potencia": 90 },
+      { "nombre": "Cascada", "potencia": 80 },
+      { "nombre": "Rayo Burbuja", "potencia": 65 },
+      { "nombre": "Acua Jet", "potencia": 40 }
+    ]
+  },
+  {
+    "tipo": "Planta",
+    "movimientos": [
+      { "nombre": "Látigo Cepa", "potencia": 45 },
+      { "nombre": "Hoja Afilada", "potencia": 90 },
+      { "nombre": "Rayo Solar", "potencia": 120 },
+      { "nombre": "Drenadoras", "potencia": 50 },
+      { "nombre": "Bomba Germen", "potencia": 80 },
+      { "nombre": "Energía Bola", "potencia": 90 }
+    ]
+  },
+  {
+    "tipo": "Eléctrico",
+    "movimientos": [
+      { "nombre": "Impactrueno", "potencia": 40 },
+      { "nombre": "Rayo", "potencia": 90 },
+      { "nombre": "Chispa", "potencia": 65 },
+      { "nombre": "Electrobola", "potencia": 80 },
+      { "nombre": "Voltio Cruel", "potencia": 100 },
+      { "nombre": "Onda Trueno", "potencia": 50 }
+    ]
+  },
+  {
+    "tipo": "Roca",
+    "movimientos": [
+      { "nombre": "Avalancha", "potencia": 60 },
+      { "nombre": "Roca Afilada", "potencia": 50 },
+      { "nombre": "Lanzarrocas", "potencia": 75 },
+      { "nombre": "Tumba Rocas", "potencia": 60 },
+      { "nombre": "Pedrada", "potencia": 70 },
+      { "nombre": "Poder Pasado", "potencia": 65 }
+    ]
+  },
+  {
+    "tipo": "Tierra",
+    "movimientos": [
+      { "nombre": "Terremoto", "potencia": 100 },
+      { "nombre": "Excavar", "potencia": 80 },
+      { "nombre": "Tierra Viva", "potencia": 90 },
+      { "nombre": "Lanza Mugre", "potencia": 70 },
+      { "nombre": "Hueso Palo", "potencia": 65 },
+      { "nombre": "Fuerza Telur", "potencia": 85 }
+    ]
+  },
+  {
+    "tipo": "Volador",
+    "movimientos": [
+      { "nombre": "Ráfaga", "potencia": 60 },
+      { "nombre": "Ataque Ala", "potencia": 60 },
+      { "nombre": "Aire Afilado", "potencia": 75 },
+      { "nombre": "Vuelo", "potencia": 90 },
+      { "nombre": "Picotazo", "potencia": 35 },
+      { "nombre": "Acróbata", "potencia": 80 }
+    ]
+  },
+  {
+    "tipo": "Hielo",
+    "movimientos": [
+      { "nombre": "Rayo Hielo", "potencia": 90 },
+      { "nombre": "Ventisca", "potencia": 110 },
+      { "nombre": "Colmillo Hielo", "potencia": 65 },
+      { "nombre": "Canto Helado", "potencia": 50 },
+      { "nombre": "Polvo Hielo", "potencia": 40 },
+      { "nombre": "Avalancha Hielo", "potencia": 75 }
+    ]
+  },
+  {
+    "tipo": "Bicho",
+    "movimientos": [
+      { "nombre": "Picadura", "potencia": 35 },
+      { "nombre": "Tijera X", "potencia": 80 },
+      { "nombre": "Zumbido", "potencia": 90 },
+      { "nombre": "Megacuerno", "potencia": 120 },
+      { "nombre": "Pin Misil", "potencia": 60 },
+      { "nombre": "Acoso", "potencia": 50 }
+    ]
+  },
+  {
+    "tipo": "Normal",
+    "movimientos": [
+      { "nombre": "Placaje", "potencia": 40 },
+      { "nombre": "Ataque Rápido", "potencia": 40 },
+      { "nombre": "Golpe Cabeza", "potencia": 70 },
+      { "nombre": "Rapidez", "potencia": 60 },
+      { "nombre": "Corte", "potencia": 50 },
+      { "nombre": "Destructor", "potencia": 80 }
+    ]
+  },
+  {
+    "tipo": "Veneno",
+    "movimientos": [
+      { "nombre": "Ácido", "potencia": 40 },
+      { "nombre": "Bomba Lodo", "potencia": 90 },
+      { "nombre": "Puya Nociva", "potencia": 80 },
+      { "nombre": "Colmillo Veneno", "potencia": 50 },
+      { "nombre": "Gas Venenoso", "potencia": 35 },
+      { "nombre": "Lodo Negro", "potencia": 65 }
+    ]
+  }
+]

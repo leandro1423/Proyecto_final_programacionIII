@@ -1,8 +1,40 @@
-[
-  {
-    "clave": "1234",
-    "monedas": 100,
-    "usuario": "ana",
-    "victorias": 0
-  }
-]
+{
+  "entrenadores": [
+    {
+      "nombre": "Carlos",
+      "monedas": 230,
+      "sobres_pendientes": 1,
+      "inventario": []
+    },
+    {
+      "nombre": "Ana",
+      "monedas": 150,
+      "sobres_pendientes": 2,
+      "inventario": []
+    },
+    {
+      "nombre": "Luis",
+      "monedas": 320,
+      "sobres_pendientes": 0,
+      "inventario": []
+    },
+    {
+      "nombre": "Sofia",
+      "monedas": 500,
+      "sobres_pendientes": 3,
+      "inventario": []
+    },
+    {
+      "nombre": "Mateo",
+      "monedas": 90,
+      "sobres_pendientes": 1,
+      "inventario": []
+    },
+    {
+      "nombre": "Valentina",
+      "monedas": 275,
+      "sobres_pendientes": 2,
+      "inventario": []
+    }
+  ]
+}
