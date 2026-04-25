@@ -1,0 +1,50 @@
+[
+  { "nombre": "Charmander", "tipos": ["Fuego"], "ataque_base": 52, "defensa_base": 43, "velocidad_base": 65, "rareza": "comun" },
+  { "nombre": "Pikachu", "tipos": ["Eléctrico"], "ataque_base": 55, "defensa_base": 40, "velocidad_base": 90, "rareza": "raro" },
+  { "nombre": "Geodude", "tipos": ["Roca", "Tierra"], "ataque_base": 80, "defensa_base": 100, "velocidad_base": 20, "rareza": "comun" },
+  { "nombre": "Squirtle", "tipos": ["Agua"], "ataque_base": 48, "defensa_base": 65, "velocidad_base": 43, "rareza": "comun" },
+  { "nombre": "Bulbasaur", "tipos": ["Planta", "Veneno"], "ataque_base": 49, "defensa_base": 49, "velocidad_base": 45, "rareza": "comun" },
+
+  { "nombre": "Charizard", "tipos": ["Fuego", "Volador"], "ataque_base": 84, "defensa_base": 78, "velocidad_base": 100, "rareza": "epico" },
+  { "nombre": "Blastoise", "tipos": ["Agua"], "ataque_base": 83, "defensa_base": 100, "velocidad_base": 78, "rareza": "epico" },
+  { "nombre": "Venusaur", "tipos": ["Planta", "Veneno"], "ataque_base": 82, "defensa_base": 83, "velocidad_base": 80, "rareza": "epico" },
+
+  { "nombre": "Pidgey", "tipos": ["Normal", "Volador"], "ataque_base": 45, "defensa_base": 40, "velocidad_base": 56, "rareza": "comun" },
+  { "nombre": "Pidgeotto", "tipos": ["Normal", "Volador"], "ataque_base": 60, "defensa_base": 55, "velocidad_base": 71, "rareza": "raro" },
+  { "nombre": "Zubat", "tipos": ["Veneno", "Volador"], "ataque_base": 45, "defensa_base": 35, "velocidad_base": 55, "rareza": "comun" },
+  { "nombre": "Golbat", "tipos": ["Veneno", "Volador"], "ataque_base": 80, "defensa_base": 70, "velocidad_base": 90, "rareza": "raro" },
+
+  { "nombre": "Butterfree", "tipos": ["Bicho", "Volador"], "ataque_base": 45, "defensa_base": 50, "velocidad_base": 70, "rareza": "raro" },
+  { "nombre": "Beedrill", "tipos": ["Bicho", "Veneno"], "ataque_base": 90, "defensa_base": 40, "velocidad_base": 75, "rareza": "raro" },
+  { "nombre": "Scyther", "tipos": ["Bicho", "Volador"], "ataque_base": 110, "defensa_base": 80, "velocidad_base": 105, "rareza": "epico" },
+
+  { "nombre": "Sandshrew", "tipos": ["Tierra"], "ataque_base": 75, "defensa_base": 85, "velocidad_base": 40, "rareza": "comun" },
+  { "nombre": "Sandslash", "tipos": ["Tierra"], "ataque_base": 100, "defensa_base": 110, "velocidad_base": 65, "rareza": "raro" },
+  { "nombre": "Diglett", "tipos": ["Tierra"], "ataque_base": 55, "defensa_base": 25, "velocidad_base": 95, "rareza": "comun" },
+  { "nombre": "Dugtrio", "tipos": ["Tierra"], "ataque_base": 100, "defensa_base": 50, "velocidad_base": 120, "rareza": "epico" },
+
+  { "nombre": "Onix", "tipos": ["Roca", "Tierra"], "ataque_base": 45, "defensa_base": 160, "velocidad_base": 70, "rareza": "raro" },
+  { "nombre": "Rhyhorn", "tipos": ["Tierra", "Roca"], "ataque_base": 85, "defensa_base": 95, "velocidad_base": 25, "rareza": "comun" },
+  { "nombre": "Rhydon", "tipos": ["Tierra", "Roca"], "ataque_base": 130, "defensa_base": 120, "velocidad_base": 40, "rareza": "epico" },
+
+  { "nombre": "Vulpix", "tipos": ["Fuego"], "ataque_base": 41, "defensa_base": 40, "velocidad_base": 65, "rareza": "comun" },
+  { "nombre": "Ninetales", "tipos": ["Fuego"], "ataque_base": 76, "defensa_base": 75, "velocidad_base": 100, "rareza": "epico" },
+
+  { "nombre": "Oddish", "tipos": ["Planta", "Veneno"], "ataque_base": 50, "defensa_base": 55, "velocidad_base": 30, "rareza": "comun" },
+  { "nombre": "Gloom", "tipos": ["Planta", "Veneno"], "ataque_base": 65, "defensa_base": 70, "velocidad_base": 40, "rareza": "raro" },
+  { "nombre": "Vileplume", "tipos": ["Planta", "Veneno"], "ataque_base": 80, "defensa_base": 85, "velocidad_base": 50, "rareza": "epico" },
+
+  { "nombre": "Poliwag", "tipos": ["Agua"], "ataque_base": 50, "defensa_base": 40, "velocidad_base": 90, "rareza": "comun" },
+  { "nombre": "Poliwhirl", "tipos": ["Agua"], "ataque_base": 65, "defensa_base": 65, "velocidad_base": 90, "rareza": "raro" },
+  { "nombre": "Poliwrath", "tipos": ["Agua", "Lucha"], "ataque_base": 95, "defensa_base": 95, "velocidad_base": 70, "rareza": "epico" },
+
+  { "nombre": "Tentacool", "tipos": ["Agua", "Veneno"], "ataque_base": 40, "defensa_base": 35, "velocidad_base": 70, "rareza": "comun" },
+  { "nombre": "Tentacruel", "tipos": ["Agua", "Veneno"], "ataque_base": 70, "defensa_base": 65, "velocidad_base": 100, "rareza": "raro" },
+
+  { "nombre": "Magnemite", "tipos": ["Eléctrico", "Acero"], "ataque_base": 35, "defensa_base": 70, "velocidad_base": 45, "rareza": "comun" },
+  { "nombre": "Magneton", "tipos": ["Eléctrico", "Acero"], "ataque_base": 60, "defensa_base": 95, "velocidad_base": 70, "rareza": "raro" },
+
+  { "nombre": "Gastly", "tipos": ["Fantasma", "Veneno"], "ataque_base": 35, "defensa_base": 30, "velocidad_base": 80, "rareza": "comun" },
+  { "nombre": "Haunter", "tipos": ["Fantasma", "Veneno"], "ataque_base": 50, "defensa_base": 45, "velocidad_base": 95, "rareza": "raro" },
+  { "nombre": "Gengar", "tipos": ["Fantasma", "Veneno"], "ataque_base": 65, "defensa_base": 60, "velocidad_base": 110, "rareza": "epico" }
+]
