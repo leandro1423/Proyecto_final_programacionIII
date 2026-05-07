@@ -1,21 +1,37 @@
 # ProyectoPokemon
 
-**TODO: Add description**
+Sistema backend desarrollado en Elixir para la gestión de entrenadores, sobres, Pokémon y batallas inspirado en Pokémon.
 
-## Installation
+El proyecto utiliza:
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `proyecto_pokemon` to your list of dependencies in `mix.exs`:
+- Persistencia en archivos JSON
+- Arquitectura basada en gestores
+- ETS para manejo de sesiones
+- Generación aleatoria de Pokémon
+- Sistema de rarezas
+- Gestión de inventario y equipos
+- Sistema de sobres y recompensas
+
+---
+
+# 1. Gestión de Entrenadores
+
+El módulo `GestorEntrenadores` se encarga de:
+
+- Registro de usuarios
+- Inicio de sesión
+- Cierre de sesión
+- Gestión de inventario
+- Gestión de equipos
+- Persistencia automática en JSON
+
+---
+
+## Registro de usuario
+
+Cuando un usuario ejecuta:
 
 ```elixir
-def deps do
-  [
-    {:proyecto_pokemon, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/proyecto_pokemon>.
-
+ProyectoPokemon.Servidor.ejecutar(
+  "iniciar leandro 1234"
+)
