@@ -1,40 +1,188 @@
 {
   "entrenadores": [
     {
-      "nombre": "Carlos",
-      "monedas": 230,
-      "sobres_pendientes": 1,
-      "inventario": []
+      "clave": "dran",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 0,
+      "monedas_acumuladas": 0,
+      "sobres_pendientes": [
+        {
+          "id": 644887,
+          "tipo": "basico"
+        }
+      ],
+      "usuario": "lane",
+      "victorias": 0
     },
     {
-      "nombre": "Ana",
-      "monedas": 150,
-      "sobres_pendientes": 2,
-      "inventario": []
-    },
-    {
-      "nombre": "Luis",
-      "monedas": 320,
-      "sobres_pendientes": 0,
-      "inventario": []
-    },
-    {
-      "nombre": "Sofia",
+      "clave": "1234",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
       "monedas": 500,
-      "sobres_pendientes": 3,
-      "inventario": []
+      "monedas_acumuladas": 1200,
+      "sobres_pendientes": [
+        {
+          "id": 487700,
+          "tipo": "basico"
+        }
+      ],
+      "usuario": "leandro",
+      "victorias": 5
     },
     {
-      "nombre": "Mateo",
-      "monedas": 90,
-      "sobres_pendientes": 1,
-      "inventario": []
+      "clave": "pikachu",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 800,
+      "monedas_acumuladas": 2000,
+      "sobres_pendientes": [
+        {
+          "id": 412311,
+          "tipo": "avanzado"
+        },
+        {
+          "id": 412312,
+          "tipo": "basico"
+        }
+      ],
+      "usuario": "ash",
+      "victorias": 12
     },
     {
-      "nombre": "Valentina",
-      "monedas": 275,
-      "sobres_pendientes": 2,
-      "inventario": []
+      "clave": "misty123",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 950,
+      "monedas_acumuladas": 2500,
+      "sobres_pendientes": [
+        {
+          "id": 512441,
+          "tipo": "avanzado"
+        }
+      ],
+      "usuario": "misty",
+      "victorias": 15
+    },
+    {
+      "clave": "brock456",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 300,
+      "monedas_acumuladas": 700,
+      "sobres_pendientes": [
+        {
+          "id": 622881,
+          "tipo": "basico"
+        }
+      ],
+      "usuario": "brock",
+      "victorias": 4
+    },
+    {
+      "clave": "rocket",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 1500,
+      "monedas_acumuladas": 4000,
+      "sobres_pendientes": [
+        {
+          "id": 712211,
+          "tipo": "avanzado"
+        },
+        {
+          "id": 712212,
+          "tipo": "avanzado"
+        }
+      ],
+      "usuario": "jessie",
+      "victorias": 20
+    },
+    {
+      "clave": "meowth",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 1450,
+      "monedas_acumuladas": 3900,
+      "sobres_pendientes": [
+        {
+          "id": 812331,
+          "tipo": "basico"
+        }
+      ],
+      "usuario": "james",
+      "victorias": 18
+    },
+    {
+      "clave": "elite4",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 2500,
+      "monedas_acumuladas": 8000,
+      "sobres_pendientes": [
+        {
+          "id": 912441,
+          "tipo": "avanzado"
+        }
+      ],
+      "usuario": "cynthia",
+      "victorias": 40
+    },
+    {
+      "clave": "dragon",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 2100,
+      "monedas_acumuladas": 7000,
+      "sobres_pendientes": [
+        {
+          "id": 912551,
+          "tipo": "avanzado"
+        }
+      ],
+      "usuario": "lance",
+      "victorias": 35
+    },
+    {
+      "clave": "gymleader",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 600,
+      "monedas_acumuladas": 1800,
+      "sobres_pendientes": [
+        {
+          "id": 111221,
+          "tipo": "basico"
+        }
+      ],
+      "usuario": "erika",
+      "victorias": 10
+    },
+    {
+      "clave": "electric",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 780,
+      "monedas_acumuladas": 2100,
+      "sobres_pendientes": [
+        {
+          "id": 221331,
+          "tipo": "avanzado"
+        }
+      ],
+      "usuario": "ltsurge",
+      "victorias": 13
     }
   ]
 }

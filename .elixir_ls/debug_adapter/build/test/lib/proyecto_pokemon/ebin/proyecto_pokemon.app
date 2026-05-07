@@ -1,0 +1,1 @@
+{application,proyecto_pokemon,[{modules,['Elixir.ProyectoPokemon','Elixir.ProyectoPokemon.GestorEntrenadores','Elixir.ProyectoPokemon.Persistencia']},{optional_applications,[]},{applications,[kernel,stdlib,elixir,logger,jason]},{description,"proyecto_pokemon"},{registered,[]},{vsn,"0.1.0"}]}.

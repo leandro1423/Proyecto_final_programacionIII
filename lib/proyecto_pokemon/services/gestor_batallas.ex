@@ -9,6 +9,34 @@ defmodule ProyectoPokemon.GestorBatallas do
     "Roca" => ["Fuego", "Hielo", "Volador", "Bicho"]
   }
 
+  def iniciar_batalla(id_sala, pokemon1, pokemon2) do
+  batalla = %{
+    sala: id_sala,
+    pokemon1: pokemon1,
+    pokemon2: pokemon2,
+    estado: :activa
+  }
+
+  {:ok, batalla}
+
+  end
+
+  def atacar(atacante, defensor, movimiento) do
+
+  dano = calcular_dano(atacante, defensor, movimiento)
+
+  nuevo_hp = max(defensor["hp"] - dano, 0)
+
+  defensor_actualizado =
+    Map.put(defensor, "hp", nuevo_hp)
+
+  %{
+    atacante: atacante,
+    defensor: defensor_actualizado,
+    dano: dano
+  }
+end
+
   def calcular_dano(atacante, defensor, movimiento, factor_aleatorio \\ nil) do
     factor_aleatorio = factor_aleatorio || (85 + :rand.uniform(16) - 1) / 100
     poder = movimiento["potencia"] || movimiento["poder_base"]
