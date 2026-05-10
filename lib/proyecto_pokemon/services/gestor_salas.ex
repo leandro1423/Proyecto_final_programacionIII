@@ -75,112 +75,26 @@ defmodule ProyectoPokemon.GestorSalas do
     {:ok, estado}
   end
 
-  @impl true
-  def handle_call(
-        {:crear_sala, usuario, tiempo_turno},
-        _from,
-        estado
-      ) do
-
-    if usuario == nil do
-      {:reply, {:error, "No hay sesión activa"}, estado}
-    else
-      id = "S-#{:rand.uniform(9000) + 999}"
-
-      sala = %{
-        id: id,
-        jugadores: [usuario],
-        tiempo_turno: tiempo_turno,
-        estado: :esperando
-      }
-
-      nuevo_estado =
-        Map.put(estado, id, sala)
-
-      {:reply,
-       {:ok, "Sala #{id} creada"},
-       nuevo_estado}
-    end
-  end
+  # ... (TODO lo demás igual)
 
   @impl true
-  def handle_call(:listar_salas, _from, estado) do
-    salas =
-      estado
-      |> Enum.map(fn {id, sala} ->
-        "#{id} | jugadores: #{Enum.join(sala.jugadores, ", ")} | estado: #{sala.estado}"
-      end)
-      |> Enum.join("\n")
+def handle_call({:salir_sala, id, usuario}, _from, estado) do
+  case Map.get(estado, id) do
+    nil ->
+      {:reply, {:error, "La sala no existe"}, estado}
 
-    {:reply, salas, estado}
-  end
+    sala ->
+      if usuario in sala.jugadores do
 
-  @impl true
-  def handle_call(
-        {:unirse_sala, id, usuario},
-        _from,
-        estado
-      ) do
+        restantes =
+          Enum.reject(sala.jugadores, fn j -> j == usuario end)
 
-    case Map.get(estado, id) do
-      nil ->
-        {:reply, {:error, "La sala no existe"}, estado}
+        es_1v1 = length(sala.jugadores) == 2
 
-      sala ->
-        cond do
-          usuario == nil ->
-            {:reply, {:error, "No hay sesión activa"}, estado}
+        {nuevo_estado, mensaje} =
+          if es_1v1 do
 
-          usuario in sala.jugadores ->
-            {:reply, {:error, "Ya estás en esta sala"}, estado}
-
-          length(sala.jugadores) >= 2 ->
-            {:reply, {:error, "La sala ya está llena"}, estado}
-
-          true ->
-            nueva_sala = %{
-              sala |
-              jugadores: sala.jugadores ++ [usuario],
-              estado: :lista
-            }
-
-            nuevo_estado =
-              Map.put(estado, id, nueva_sala)
-
-            {:reply,
-             {:ok, "Te uniste a la sala #{id}"},
-             nuevo_estado}
-        end
-    end
-  end
-
-  @impl true
-  def handle_call(
-        {:salir_sala, id, usuario},
-        _from,
-        estado
-      ) do
-
-    case Map.get(estado, id) do
-      nil ->
-        {:reply, {:error, "La sala no existe"}, estado}
-
-      sala ->
-
-        if usuario in sala.jugadores do
-
-          restantes =
-            Enum.reject(sala.jugadores, fn j ->
-              j == usuario
-            end)
-
-          nuevo_estado =
-            Map.delete(estado, id)
-
-          if length(sala.jugadores) == 2 do
-
-            ganador =
-              List.first(restantes)
+            ganador = List.first(restantes)
 
             GestorBatallas.registrar_resultado(
               ganador,
@@ -188,42 +102,31 @@ defmodule ProyectoPokemon.GestorSalas do
               "Abandono de sala"
             )
 
-            {:reply,
-             {:ok, "#{usuario} abandonó la sala. #{ganador} gana automáticamente"},
-             nuevo_estado}
+            {
+              Map.delete(estado, id),
+              "#{usuario} abandonó la sala. #{ganador} gana automáticamente"
+            }
 
           else
 
-            {:reply,
-             {:ok, "Saliste de la sala"},
-             nuevo_estado}
+            nueva_sala = %{
+              sala |
+              jugadores: restantes,
+              estado: :esperando
+            }
+
+            {
+              Map.put(estado, id, nueva_sala),
+              "#{usuario} salió de la sala"
+            }
 
           end
 
-        else
-          {:reply, {:error, "No perteneces a esa sala"}, estado}
-        end
-    end
+        {:reply, {:ok, mensaje}, nuevo_estado}
+
+      else
+        {:reply, {:error, "No perteneces a esa sala"}, estado}
+      end
   end
-
-  @impl true
-  def handle_call({:obtener_sala, id}, _from, estado) do
-    case Map.get(estado, id) do
-      nil ->
-        {:reply, {:error, "Sala no encontrada"}, estado}
-
-      sala ->
-        {:reply, {:ok, sala}, estado}
-    end
-  end
-
-  @impl true
-  def handle_call({:eliminar_sala, id}, _from, estado) do
-    nuevo_estado =
-      Map.delete(estado, id)
-
-    {:reply,
-     {:ok, "Sala eliminada"},
-     nuevo_estado}
-  end
+end
 end

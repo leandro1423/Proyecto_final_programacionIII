@@ -1,0 +1,12 @@
+defmodule ProyectoPokemon.Application do
+  use Application
+
+  def start(_type, _args) do
+    children = [
+      ProyectoPokemon.GestorSalas
+    ]
+
+    opts = [strategy: :one_for_one, name: ProyectoPokemon.Supervisor]
+    Supervisor.start_link(children, opts)
+  end
+end
