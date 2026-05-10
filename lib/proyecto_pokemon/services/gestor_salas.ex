@@ -1,7 +1,10 @@
 defmodule ProyectoPokemon.GestorSalas do
   use GenServer
 
-  alias ProyectoPokemon.GestorEntrenadores
+  alias ProyectoPokemon.{
+    GestorEntrenadores,
+    GestorBatallas
+  }
 
   # =========================
   # CLIENTE
@@ -37,6 +40,15 @@ defmodule ProyectoPokemon.GestorSalas do
     GenServer.call(
       {:global, :gestor_salas},
       {:unirse_sala, id, usuario}
+    )
+  end
+
+  def salir_sala(id) do
+    usuario = GestorEntrenadores.usuario_actual()
+
+    GenServer.call(
+      {:global, :gestor_salas},
+      {:salir_sala, id, usuario}
     )
   end
 
@@ -138,6 +150,58 @@ defmodule ProyectoPokemon.GestorSalas do
             {:reply,
              {:ok, "Te uniste a la sala #{id}"},
              nuevo_estado}
+        end
+    end
+  end
+
+  @impl true
+  def handle_call(
+        {:salir_sala, id, usuario},
+        _from,
+        estado
+      ) do
+
+    case Map.get(estado, id) do
+      nil ->
+        {:reply, {:error, "La sala no existe"}, estado}
+
+      sala ->
+
+        if usuario in sala.jugadores do
+
+          restantes =
+            Enum.reject(sala.jugadores, fn j ->
+              j == usuario
+            end)
+
+          nuevo_estado =
+            Map.delete(estado, id)
+
+          if length(sala.jugadores) == 2 do
+
+            ganador =
+              List.first(restantes)
+
+            GestorBatallas.registrar_resultado(
+              ganador,
+              usuario,
+              "Abandono de sala"
+            )
+
+            {:reply,
+             {:ok, "#{usuario} abandonó la sala. #{ganador} gana automáticamente"},
+             nuevo_estado}
+
+          else
+
+            {:reply,
+             {:ok, "Saliste de la sala"},
+             nuevo_estado}
+
+          end
+
+        else
+          {:reply, {:error, "No perteneces a esa sala"}, estado}
         end
     end
   end

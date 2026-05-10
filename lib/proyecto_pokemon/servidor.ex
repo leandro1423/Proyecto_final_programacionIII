@@ -1,9 +1,9 @@
 defmodule ProyectoPokemon.Servidor do
- alias ProyectoPokemon.{
-  GestorEntrenadores,
-  GestorSobres,
-  GestorSalas
-}
+  alias ProyectoPokemon.{
+    GestorEntrenadores,
+    GestorSobres,
+    GestorSalas
+  }
 
   def ejecutar(comando) when is_binary(comando) do
     comando
@@ -72,6 +72,9 @@ defmodule ProyectoPokemon.Servidor do
 
   defp interpretar(["unirse_sala", id]),
     do: GestorSalas.unirse_sala(id)
+
+  defp interpretar(["salir_sala", id]),
+    do: GestorSalas.salir_sala(id)
 
   # =========================
   # BATALLAS
