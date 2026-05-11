@@ -78,6 +78,11 @@ defmodule ProyectoPokemon.GestorSalas do
   end
 
   @impl true
+def handle_call({:crear_sala, usuario}, from, estado) do
+  handle_call({:crear_sala, usuario, 20}, from, estado)
+end
+
+  @impl true
 def handle_call({:crear_sala, usuario, tiempo_turno}, _from, estado) do
   id = "S-" <> Integer.to_string(:rand.uniform(9999))
 
