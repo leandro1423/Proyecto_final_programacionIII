@@ -78,6 +78,11 @@ defmodule ProyectoPokemon.GestorSalas do
   end
 
   @impl true
+def handle_call(:listar_salas, _from, estado) do
+  {:reply, estado, estado}
+end
+
+  @impl true
 def handle_call({:crear_sala, usuario}, from, estado) do
   handle_call({:crear_sala, usuario, 20}, from, estado)
 end
@@ -100,7 +105,37 @@ def handle_call({:crear_sala, usuario, tiempo_turno}, _from, estado) do
   {:reply, {:ok, "Sala creada con ID #{id}"}, nuevo_estado}
 end
 
-  # ... (TODO lo demás igual)
+  @impl true
+def handle_call({:unirse_sala, id, usuario}, _from, estado) do
+  case Map.get(estado, id) do
+    nil ->
+      {:reply, {:error, "La sala no existe"}, estado}
+
+    sala ->
+      cond do
+        usuario in sala.jugadores ->
+          {:reply, {:error, "Ya estás en la sala"}, estado}
+
+        length(sala.jugadores) >= 2 ->
+          {:reply, {:error, "La sala está llena"}, estado}
+
+        true ->
+          nuevos_jugadores =
+            sala.jugadores ++ [usuario]
+
+          nueva_sala = %{
+            sala |
+            jugadores: nuevos_jugadores,
+            estado: :lista
+          }
+
+          nuevo_estado =
+            Map.put(estado, id, nueva_sala)
+
+          {:reply, {:ok, "#{usuario} se unió a la sala"}, nuevo_estado}
+      end
+  end
+end
 
   @impl true
 def handle_call({:salir_sala, id, usuario}, _from, estado) do
