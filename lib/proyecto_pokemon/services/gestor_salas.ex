@@ -43,6 +43,8 @@ defmodule ProyectoPokemon.GestorSalas do
     )
   end
 
+
+
   def salir_sala(id) do
     usuario = GestorEntrenadores.usuario_actual()
 
@@ -74,6 +76,24 @@ defmodule ProyectoPokemon.GestorSalas do
   def init(estado) do
     {:ok, estado}
   end
+
+  @impl true
+def handle_call({:crear_sala, usuario, tiempo_turno}, _from, estado) do
+  id = "S-" <> Integer.to_string(:rand.uniform(9999))
+
+  nueva_sala = %{
+    id: id,
+    creador: usuario || "invitado",
+    jugadores: [usuario || "invitado"],
+    estado: :esperando,
+    tiempo_turno: tiempo_turno
+  }
+
+  nuevo_estado =
+    Map.put(estado, id, nueva_sala)
+
+  {:reply, {:ok, "Sala creada con ID #{id}"}, nuevo_estado}
+end
 
   # ... (TODO lo demás igual)
 
