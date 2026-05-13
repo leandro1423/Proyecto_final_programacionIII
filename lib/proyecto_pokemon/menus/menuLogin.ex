@@ -14,7 +14,7 @@ defmodule ProyectoPokemon.MenuLogin do
 
     case IO.gets("> ") |> String.trim() do
       "1" -> login()
-      "2" -> :ok
+      "2" -> ProyectoPokemon.MenuInicio.iniciar()
       _ -> mostrar_menu()
     end
   end
@@ -24,8 +24,8 @@ defmodule ProyectoPokemon.MenuLogin do
     clave = IO.gets("Clave: ") |> String.trim()
 
     case Servidor.ejecutar("iniciar " <> usuario <> " " <> clave) do
-      {:ok, _msg} ->
-        IO.puts("Bienvenido #{usuario}")
+      {:ok, msg} ->
+        IO.puts(msg)
         ProyectoPokemon.MenuPrincipal.iniciar()
 
       {:error, msg} ->

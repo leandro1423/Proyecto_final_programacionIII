@@ -217,23 +217,32 @@ defmodule ProyectoPokemon.GestorEntrenadores do
   end
 
   defp registrar_usuario(trainers, usuario, clave) do
-    nuevo = %{
-      "usuario" => usuario,
-      "clave" => clave,
-      "monedas" => 0,
-      "monedas_acumuladas" => 0,
-      "victorias" => 0,
-      "sobres_pendientes" => [%{"id" => generar_id(), "tipo" => "basico"}],
-      "inventario" => [],
-      "equipos" => %{},
-      "equipo_actual" => nil
-    }
+  nuevo = %{
+    "usuario" => usuario,
+    "clave" => clave,
+    "monedas" => 0,
+    "monedas_acumuladas" => 0,
+    "victorias" => 0,
 
-    Persistencia.guardar_trainers([nuevo | trainers])
-    iniciar_sesion(usuario)
-    {:ok, "Usuario registrado correctamente. Recibiste 1 sobre básico gratis"}
-  end
+    # 🎁 aquí le das el sobre inicial
+    "sobres_pendientes" => [
+      %{
+        "id" => generar_id(),
+        "tipo" => "basico"
+      }
+    ],
 
+    "inventario" => [],
+    "equipos" => %{},
+    "equipo_actual" => nil
+  }
+
+  Persistencia.guardar_trainers([nuevo | trainers])
+  iniciar_sesion(usuario)
+
+  {:ok,
+   "Usuario registrado correctamente. Tienes 1 sobre básico listo para abrir"}
+end
   defp validar_clave(entrenador, clave) do
     if entrenador["clave"] == clave do
       iniciar_sesion(entrenador["usuario"])

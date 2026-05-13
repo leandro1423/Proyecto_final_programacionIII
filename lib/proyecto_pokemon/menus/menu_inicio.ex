@@ -11,14 +11,10 @@ defmodule ProyectoPokemon.MenuInicio do
     """)
 
     case IO.gets("> ") |> String.trim() do
-      "1" -> login()
+      "1" -> ProyectoPokemon.MenuLogin.iniciar()
       "2" -> registro()
       _ -> mostrar_menu()
     end
-  end
-
-  defp login do
-    IO.puts("login")
   end
 
   defp registro do
