@@ -79,7 +79,7 @@ defmodule ProyectoPokemon.GestorSalas do
 
   @impl true
 def handle_call(:listar_salas, _from, estado) do
-  {:reply, estado, estado}
+  {:reply, Map.values(estado), estado}
 end
 
   @impl true
