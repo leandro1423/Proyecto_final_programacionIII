@@ -39,26 +39,31 @@ defmodule ProyectoPokemon.MenuPrincipal do
     case IO.gets("> ") |> String.trim() do
       "1" ->
         crear_sala_batalla()
+        pausar()
         mostrar_menu()
 
       "2" ->
         crear_sala_intercambio()
+        pausar()
         mostrar_menu()
 
       "3" ->
         unirse_sala()
+        pausar()
         mostrar_menu()
 
       "4" ->
         ProyectoPokemon.Servidor.ejecutar("perfil")
         |> mostrar_resultado()
 
+        pausar()
         mostrar_menu()
 
       "5" ->
         ProyectoPokemon.Servidor.ejecutar("inventario")
         |> mostrar_resultado()
 
+        pausar()
         mostrar_menu()
 
       "6" ->
@@ -69,6 +74,7 @@ defmodule ProyectoPokemon.MenuPrincipal do
 
       _ ->
         IO.puts("\nOpción inválida. Intenta nuevamente.\n")
+        pausar()
         mostrar_menu()
     end
   end
@@ -139,8 +145,12 @@ defmodule ProyectoPokemon.MenuPrincipal do
   end
 
   # =========================
-  # MOSTRAR RESULTADOS
+  # AUXILIARES
   # =========================
+
+  defp pausar do
+    IO.gets("\nPresiona ENTER para continuar...")
+  end
 
   defp mostrar_resultado({:ok, mensaje}) when is_binary(mensaje) do
     IO.puts("\n✅ #{mensaje}\n")

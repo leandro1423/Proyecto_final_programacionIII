@@ -4,14 +4,12 @@ defmodule ProyectoPokemon.GestorSalasTest do
   alias ProyectoPokemon.GestorSalas
 
   setup do
-
     start_supervised!(GestorSalas)
 
     :ok
   end
 
   test "crear una sala" do
-
     {:ok, mensaje} =
       GestorSalas.crear_sala()
 
@@ -19,7 +17,6 @@ defmodule ProyectoPokemon.GestorSalasTest do
   end
 
   test "listar salas" do
-
     GestorSalas.crear_sala()
 
     salas = GestorSalas.listar_salas()

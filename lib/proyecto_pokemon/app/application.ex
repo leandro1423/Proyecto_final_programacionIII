@@ -2,20 +2,10 @@ defmodule ProyectoPokemon.Application do
   use Application
 
   def start(_type, _args) do
-    es_servidor =
-      String.starts_with?(
-        Atom.to_string(Node.self()),
-        "servidor@"
-      )
-
     children =
-      if es_servidor do
-        [
-          ProyectoPokemon.GestorSalas
-        ]
-      else
-        []
-      end
+      Node.self()
+      |> Atom.to_string()
+      |> procesos_segun_nodo()
 
     opts = [
       strategy: :one_for_one,
@@ -23,5 +13,19 @@ defmodule ProyectoPokemon.Application do
     ]
 
     Supervisor.start_link(children, opts)
+  end
+
+  # =========================
+  # PROCESOS SEGÚN EL NODO
+  # =========================
+
+  defp procesos_segun_nodo("servidor@" <> _host) do
+    [
+      ProyectoPokemon.GestorSalas
+    ]
+  end
+
+  defp procesos_segun_nodo(_otro_nodo) do
+    []
   end
 end
