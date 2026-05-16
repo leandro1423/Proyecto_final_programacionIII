@@ -5,77 +5,86 @@ defmodule ProyectoPokemon.CLI do
     |> iniciar_segun_nodo()
   end
 
-  # Si el nodo se llama servidor@..., abre el menú administrativo.
+  # Si el nodo se llama servidor@..., abre menú administrativo.
   defp iniciar_segun_nodo("servidor@" <> _host) do
     ProyectoPokemon.MenuServidor.iniciar()
   end
 
   # Cualquier otro nodo se considera cliente.
   defp iniciar_segun_nodo(_otro_nodo) do
-    conectar_servidor_si_es_posible()
+    conectar_con_servidor()
     ProyectoPokemon.MenuInicio.iniciar()
   end
 
-  # =========================
-  # CONEXIÓN AUTOMÁTICA OPCIONAL
-  # =========================
+  defp conectar_con_servidor do
+    IO.puts("""
 
-  defp conectar_servidor_si_es_posible do
-    servidor = nodo_servidor()
+    ============================
+      CONEXIÓN AL SERVIDOR
+    ============================
 
-    case servidor do
-      nil ->
-        IO.puts("""
-        No se pudo deducir automáticamente el nodo servidor.
+    Escribe el nodo del servidor.
 
-        Si estás en un cliente, conecta manualmente con:
-        Node.connect(:servidor@NOMBRE_DEL_HOST)
-        """)
+    Ejemplos:
+    - servidor@MHAPAS
+    - servidor@PCJUAN
+    - servidor@PORTATILPROFE
 
-      nodo ->
-        conectar_servidor(nodo)
-    end
+    Si estás probando en el mismo computador,
+    normalmente será: servidor@#{host_actual()}
+    """)
+
+    entrada =
+      IO.gets("Nodo servidor: ")
+      |> String.trim()
+
+    conectar_nodo(entrada)
   end
 
-  defp nodo_servidor do
-    case Node.self() do
-      :nonode@nohost ->
-        nil
+  defp conectar_nodo("") do
+    nodo_por_defecto =
+      "servidor@#{host_actual()}"
+      |> String.to_atom()
 
-      nodo ->
-        nodo
-        |> Atom.to_string()
-        |> construir_nodo_servidor()
-    end
+    intentar_conexion(nodo_por_defecto)
   end
 
-  defp construir_nodo_servidor(nombre_nodo) do
-    case String.split(nombre_nodo, "@") do
-      [_nombre_cliente, host] ->
-        String.to_atom("servidor@" <> host)
-
-      _ ->
-        nil
-    end
+  defp conectar_nodo(nombre_servidor) do
+    nombre_servidor
+    |> String.to_atom()
+    |> intentar_conexion()
   end
 
-  defp conectar_servidor(nil), do: :ok
-
-  defp conectar_servidor(nodo_servidor) do
+  defp intentar_conexion(nodo_servidor) do
     cond do
       nodo_servidor in Node.list() ->
-        IO.puts("Cliente conectado al servidor #{nodo_servidor}")
+        IO.puts("\nYa estás conectado a #{nodo_servidor}.\n")
 
       Node.connect(nodo_servidor) ->
-        IO.puts("Conexión exitosa con #{nodo_servidor}")
+        IO.puts("\nConexión exitosa con #{nodo_servidor}.\n")
 
       true ->
         IO.puts("""
+
         No fue posible conectar con #{nodo_servidor}.
 
-        Asegúrate de tener abierto el servidor con:
-        iex.bat --sname servidor --cookie pokemon -S mix
+        Revisa:
+        1. Que el servidor esté encendido.
+        2. Que ambos usen la misma cookie.
+        3. Que el nombre del nodo esté bien escrito.
+        4. Que estén en la misma red.
+        5. Que el firewall no esté bloqueando Erlang/Elixir.
         """)
     end
   end
+
+  defp host_actual do
+    Node.self()
+    |> Atom.to_string()
+    |> String.split("@")
+    |> obtener_host()
+  end
+
+  defp obtener_host([_nombre, host]), do: host
+  defp obtener_host(_), do: "NOMBRE_DEL_PC"
 end
