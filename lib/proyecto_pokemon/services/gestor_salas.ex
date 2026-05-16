@@ -92,9 +92,20 @@ defmodule ProyectoPokemon.GestorSalas do
     nueva_sala = %{
       id: id,
       creador: usuario || "invitado",
+
       jugadores: [usuario || "invitado"],
+
       estado: :esperando,
-      tiempo_turno: tiempo_turno
+
+      tiempo_turno: tiempo_turno,
+
+      turno_actual: nil,
+
+      jugador1: nil,
+
+      jugador2: nil,
+
+      ganador: nil
     }
 
     nuevo_estado =
@@ -124,15 +135,35 @@ defmodule ProyectoPokemon.GestorSalas do
             nueva_sala = %{
               sala
               | jugadores: nuevos_jugadores,
-                estado: :lista
+                estado: :en_batalla,
+
+                turno_actual: List.first(nuevos_jugadores),
+
+                jugador1: %{
+                  usuario: Enum.at(nuevos_jugadores, 0),
+                  pokemon_activo: 0,
+                  equipo: []
+                },
+
+                jugador2: %{
+                  usuario: Enum.at(nuevos_jugadores, 1),
+                  pokemon_activo: 0,
+                  equipo: []
+                }
             }
 
             nuevo_estado =
               Map.put(estado, id, nueva_sala)
 
+
             {:reply, {:ok, "#{usuario} se unió a la sala"}, nuevo_estado}
         end
     end
+  end
+
+  @impl true
+  def handle_call({:obtener_sala, id}, _from, estado) do
+    {:reply, Map.get(estado, id), estado}
   end
 
   @impl true

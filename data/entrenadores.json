@@ -9,6 +9,38 @@
       "monedas_acumuladas": 0,
       "sobres_pendientes": [
         {
+          "id": 197573,
+          "tipo": "basico"
+        }
+      ],
+      "usuario": "michale",
+      "victorias": 0
+    },
+    {
+      "clave": "123",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 0,
+      "monedas_acumuladas": 0,
+      "sobres_pendientes": [
+        {
+          "id": 402976,
+          "tipo": "basico"
+        }
+      ],
+      "usuario": "michael",
+      "victorias": 0
+    },
+    {
+      "clave": "123",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 0,
+      "monedas_acumuladas": 0,
+      "sobres_pendientes": [
+        {
           "id": 214569,
           "tipo": "basico"
         }
