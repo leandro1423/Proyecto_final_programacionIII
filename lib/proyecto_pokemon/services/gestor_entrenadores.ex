@@ -126,7 +126,9 @@ defmodule ProyectoPokemon.GestorEntrenadores do
       else
         cuerpo =
           equipos
-          |> Enum.map(fn {nombre, ids} -> "#{nombre} [#{length(ids)}/3]: #{Enum.join(ids, ", ")}" end)
+          |> Enum.map(fn {nombre, ids} ->
+            "#{nombre} [#{length(ids)}/3]: #{Enum.join(ids, ", ")}"
+          end)
           |> Enum.join("\n")
 
         "Equipos guardados:\n" <> cuerpo
@@ -149,7 +151,8 @@ defmodule ProyectoPokemon.GestorEntrenadores do
           {:error, "No puedes usar el equipo. Faltan Pokémon: #{Enum.join(faltantes, ", ")}"}
 
         true ->
-          {:ok, Map.put(entrenador, "equipo_actual", nombre), "Equipo #{nombre} cargado para batalla"}
+          {:ok, Map.put(entrenador, "equipo_actual", nombre),
+           "Equipo #{nombre} cargado para batalla"}
       end
     end)
   end
@@ -217,32 +220,31 @@ defmodule ProyectoPokemon.GestorEntrenadores do
   end
 
   defp registrar_usuario(trainers, usuario, clave) do
-  nuevo = %{
-    "usuario" => usuario,
-    "clave" => clave,
-    "monedas" => 0,
-    "monedas_acumuladas" => 0,
-    "victorias" => 0,
+    nuevo = %{
+      "usuario" => usuario,
+      "clave" => clave,
+      "monedas" => 0,
+      "monedas_acumuladas" => 0,
+      "victorias" => 0,
 
-    # 🎁 aquí le das el sobre inicial
-    "sobres_pendientes" => [
-      %{
-        "id" => generar_id(),
-        "tipo" => "basico"
-      }
-    ],
+      # 🎁 aquí le das el sobre inicial
+      "sobres_pendientes" => [
+        %{
+          "id" => generar_id(),
+          "tipo" => "basico"
+        }
+      ],
+      "inventario" => [],
+      "equipos" => %{},
+      "equipo_actual" => nil
+    }
 
-    "inventario" => [],
-    "equipos" => %{},
-    "equipo_actual" => nil
-  }
+    Persistencia.guardar_trainers([nuevo | trainers])
+    iniciar_sesion(usuario)
 
-  Persistencia.guardar_trainers([nuevo | trainers])
-  iniciar_sesion(usuario)
+    {:ok, "Usuario registrado correctamente. Tienes 1 sobre básico listo para abrir"}
+  end
 
-  {:ok,
-   "Usuario registrado correctamente. Tienes 1 sobre básico listo para abrir"}
-end
   defp validar_clave(entrenador, clave) do
     if entrenador["clave"] == clave do
       iniciar_sesion(entrenador["usuario"])
@@ -252,10 +254,13 @@ end
     end
   end
 
-  defp buscar_usuario(trainers, usuario), do: Enum.find(trainers, fn t -> t["usuario"] == usuario end)
+  defp buscar_usuario(trainers, usuario),
+    do: Enum.find(trainers, fn t -> t["usuario"] == usuario end)
 
   defp reemplazar_entrenador(trainers, entrenador) do
-    Enum.map(trainers, fn e -> if e["usuario"] == entrenador["usuario"], do: entrenador, else: e end)
+    Enum.map(trainers, fn e ->
+      if e["usuario"] == entrenador["usuario"], do: entrenador, else: e
+    end)
   end
 
   defp parsear_ids(ids_texto) when is_binary(ids_texto) do

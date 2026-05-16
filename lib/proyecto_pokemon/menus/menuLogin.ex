@@ -1,5 +1,4 @@
 defmodule ProyectoPokemon.MenuLogin do
-
   alias ProyectoPokemon.Servidor
 
   def iniciar do
@@ -33,5 +32,4 @@ defmodule ProyectoPokemon.MenuLogin do
         mostrar_menu()
     end
   end
-
 end

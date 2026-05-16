@@ -10,7 +10,6 @@ defmodule ProyectoPokemon.GestorSobres do
         "epico" => 5
       }
     },
-
     "avanzado" => %{
       "precio" => 250,
       "probabilidades" => %{
@@ -53,23 +52,16 @@ defmodule ProyectoPokemon.GestorSobres do
     sobre = @tienda[tipo]
 
     if sobre == nil do
-
       {:error, "Tipo de sobre no válido"}
-
     else
-
       GestorEntrenadores.actualizar_entrenador_en_sesion(
         usuario,
         fn entrenador ->
-
           precio = sobre["precio"]
 
           if entrenador["monedas"] < precio do
-
             {:error, "Monedas insuficientes"}
-
           else
-
             nuevo_sobre = %{
               "id" => generar_id(),
               "tipo" => tipo
@@ -78,18 +70,15 @@ defmodule ProyectoPokemon.GestorSobres do
             nuevo =
               entrenador
               |> Map.put(
-                   "monedas",
-                   entrenador["monedas"] - precio
-                 )
+                "monedas",
+                entrenador["monedas"] - precio
+              )
               |> Map.put(
-                   "sobres_pendientes",
-                   (entrenador["sobres_pendientes"] || []) ++ [nuevo_sobre]
-                 )
+                "sobres_pendientes",
+                (entrenador["sobres_pendientes"] || []) ++ [nuevo_sobre]
+              )
 
-            {:ok,
-             nuevo,
-             "Compraste un sobre #{tipo}. ID: #{nuevo_sobre["id"]}"}
-
+            {:ok, nuevo, "Compraste un sobre #{tipo}. ID: #{nuevo_sobre["id"]}"}
           end
         end
       )
@@ -104,7 +93,6 @@ defmodule ProyectoPokemon.GestorSobres do
     GestorEntrenadores.actualizar_entrenador_en_sesion(
       usuario,
       fn entrenador ->
-
         sobres =
           entrenador["sobres_pendientes"] || []
 
@@ -115,23 +103,18 @@ defmodule ProyectoPokemon.GestorSobres do
           )
 
         if sobre == nil do
-
           {:error, "No se encontró el sobre"}
-
         else
-
           pokemones =
             Persistencia.leer_pokemon()
             |> Enum.shuffle()
             |> Enum.take(3)
             |> Enum.map(fn especie ->
-
               crear_pokemon_desde_especie(
                 entrenador["usuario"],
                 sobre["tipo"],
                 especie
               )
-
             end)
 
           nuevos_sobres =
@@ -148,18 +131,15 @@ defmodule ProyectoPokemon.GestorSobres do
           nuevo =
             entrenador
             |> Map.put(
-                 "sobres_pendientes",
-                 nuevos_sobres
-               )
+              "sobres_pendientes",
+              nuevos_sobres
+            )
             |> Map.put(
-                 "inventario",
-                 pokemones ++ inventario
-               )
+              "inventario",
+              pokemones ++ inventario
+            )
 
-          {:ok,
-           nuevo,
-           formato_sobre_abierto(pokemones)}
-
+          {:ok, nuevo, formato_sobre_abierto(pokemones)}
         end
       end
     )
@@ -174,7 +154,6 @@ defmodule ProyectoPokemon.GestorSobres do
         tipo_sobre,
         especie
       ) do
-
     rareza =
       sortear_rareza(tipo_sobre)
 
@@ -183,41 +162,26 @@ defmodule ProyectoPokemon.GestorSobres do
 
     %{
       "id" => generar_id(),
-
-      "especie" =>
-        especie["nombre"],
-
-      "tipos" =>
-        especie["tipos"],
-
-      "dueno_original" =>
-        dueno,
-
-      "rareza" =>
-        rareza,
-
+      "especie" => especie["nombre"],
+      "tipos" => especie["tipos"],
+      "dueno_original" => dueno,
+      "rareza" => rareza,
       "ataque" =>
         calcular_stat(
           especie["ataque_base"],
           factor
         ),
-
       "defensa" =>
         calcular_stat(
           especie["defensa_base"],
           factor
         ),
-
       "velocidad" =>
         calcular_stat(
           especie["velocidad_base"],
           factor
         ),
-
-      "movimientos" =>
-        asignar_movimientos(
-          especie["tipos"]
-        )
+      "movimientos" => asignar_movimientos(especie["tipos"])
     }
   end
 
@@ -226,32 +190,27 @@ defmodule ProyectoPokemon.GestorSobres do
   # =========================
 
   def asignar_movimientos(tipos) do
-
     movimientos =
       movimientos_planos()
 
     obligatorios =
       case tipos do
-
         [tipo] ->
-
           movimientos_por_tipo(tipo)
           |> Enum.take_random(2)
 
         [tipo1, tipo2 | _] ->
-
           Enum.take_random(
             movimientos_por_tipo(tipo1),
             1
           ) ++
-          Enum.take_random(
-            movimientos_por_tipo(tipo2),
-            1
-          )
+            Enum.take_random(
+              movimientos_por_tipo(tipo2),
+              1
+            )
 
         _ ->
           []
-
       end
 
     faltantes =
@@ -266,8 +225,8 @@ defmodule ProyectoPokemon.GestorSobres do
     complementarios =
       movimientos
       |> Enum.reject(fn m ->
-           m["nombre"] in nombres_obligatorios
-         end)
+        m["nombre"] in nombres_obligatorios
+      end)
       |> Enum.take_random(faltantes)
 
     obligatorios ++ complementarios
@@ -276,23 +235,16 @@ defmodule ProyectoPokemon.GestorSobres do
   defp movimientos_planos do
     Persistencia.leer_movimientos()
     |> Enum.flat_map(fn grupo ->
-
       Enum.map(
         grupo["movimientos"],
         fn mov ->
-
           %{
-            "nombre" =>
-              mov["nombre"],
-
-            "tipo" =>
-              grupo["tipo"],
-
+            "nombre" => mov["nombre"],
+            "tipo" => grupo["tipo"],
             "potencia" =>
               mov["potencia"] ||
-              mov["poder_base"]
+                mov["poder_base"]
           }
-
         end
       )
     end)
@@ -312,7 +264,6 @@ defmodule ProyectoPokemon.GestorSobres do
   # =========================
 
   defp sortear_rareza(tipo_sobre) do
-
     probabilidades =
       @tienda[tipo_sobre]["probabilidades"]
 
@@ -320,17 +271,16 @@ defmodule ProyectoPokemon.GestorSobres do
       :rand.uniform(100)
 
     cond do
-
       n <= probabilidades["comun"] ->
         "comun"
 
-      n <= probabilidades["comun"] +
-           probabilidades["raro"] ->
+      n <=
+          probabilidades["comun"] +
+            probabilidades["raro"] ->
         "raro"
 
       true ->
         "epico"
-
     end
   end
 
@@ -352,9 +302,7 @@ defmodule ProyectoPokemon.GestorSobres do
   # =========================
 
   defp calcular_stat(base, factor) do
-    round(
-      base * (1 + factor / 100)
-    )
+    round(base * (1 + factor / 100))
   end
 
   # =========================
@@ -372,9 +320,7 @@ defmodule ProyectoPokemon.GestorSobres do
 
   defp buscar_sobre(sobres, id)
        when is_binary(id) do
-
     case Integer.parse(id) do
-
       {numero, ""} ->
         buscar_sobre(
           sobres,
@@ -383,7 +329,6 @@ defmodule ProyectoPokemon.GestorSobres do
 
       _ ->
         nil
-
     end
   end
 
@@ -401,17 +346,15 @@ defmodule ProyectoPokemon.GestorSobres do
   # =========================
 
   defp formato_sobre_abierto(pokemones) do
-
     cuerpo =
       pokemones
       |> Enum.with_index(1)
       |> Enum.map(fn {p, i} ->
-
         movimientos =
           p["movimientos"]
           |> Enum.map(fn m ->
-               "#{m["nombre"]} (#{m["potencia"]})"
-             end)
+            "#{m["nombre"]} (#{m["potencia"]})"
+          end)
           |> Enum.join(", ")
 
         """
@@ -421,7 +364,6 @@ defmodule ProyectoPokemon.GestorSobres do
         Dueño original: #{p["dueno_original"]}
         Movimientos: #{movimientos}
         """
-
       end)
       |> Enum.join("\n")
 

@@ -1,5 +1,4 @@
 defmodule ProyectoPokemon.MenuInicio do
-
   def iniciar do
     mostrar_menu()
   end
@@ -31,5 +30,4 @@ defmodule ProyectoPokemon.MenuInicio do
         mostrar_menu()
     end
   end
-
 end

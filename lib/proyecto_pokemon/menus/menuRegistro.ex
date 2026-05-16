@@ -1,5 +1,4 @@
 defmodule ProyectoPokemon.MenuRegistro do
-
   alias ProyectoPokemon.Servidor
 
   def iniciar do
@@ -20,5 +19,4 @@ defmodule ProyectoPokemon.MenuRegistro do
         registro()
     end
   end
-
 end

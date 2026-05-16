@@ -2,7 +2,6 @@ defmodule ProyectoPokemon.Application do
   use Application
 
   def start(_type, _args) do
-
     es_servidor =
       String.starts_with?(
         Atom.to_string(Node.self()),

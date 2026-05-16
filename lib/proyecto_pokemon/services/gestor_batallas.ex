@@ -20,7 +20,6 @@ defmodule ProyectoPokemon.GestorBatallas do
         perdedor,
         resumen \\ "Batalla finalizada"
       ) do
-
     GestorEntrenadores.recompensar(
       ganador,
       perdedor
@@ -38,7 +37,6 @@ defmodule ProyectoPokemon.GestorBatallas do
       "#{fecha} | ganador=#{ganador} | perdedor=#{perdedor} | nodo=#{nodo} | #{resumen}"
     )
 
-    {:ok,
-     "Resultado registrado. #{ganador} +100 monedas, #{perdedor} +30 monedas"}
+    {:ok, "Resultado registrado. #{ganador} +100 monedas, #{perdedor} +30 monedas"}
   end
 end

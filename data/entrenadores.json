@@ -1,6 +1,22 @@
 {
   "entrenadores": [
     {
+      "clave": "123",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 0,
+      "monedas_acumuladas": 0,
+      "sobres_pendientes": [
+        {
+          "id": 214569,
+          "tipo": "basico"
+        }
+      ],
+      "usuario": "Michael",
+      "victorias": 0
+    },
+    {
       "clave": "4321",
       "equipo_actual": null,
       "equipos": {},

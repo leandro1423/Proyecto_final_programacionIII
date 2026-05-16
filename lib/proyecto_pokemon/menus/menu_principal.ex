@@ -1,5 +1,4 @@
 defmodule ProyectoPokemon.MenuPrincipal do
-
   alias ProyectoPokemon.GestorSalas
 
   def iniciar do
@@ -7,8 +6,8 @@ defmodule ProyectoPokemon.MenuPrincipal do
   end
 
   defp mostrar_menu do
-
     IO.puts("""
+
     ==========================
         POKEMON ONLINE
     ==========================
@@ -28,75 +27,143 @@ defmodule ProyectoPokemon.MenuPrincipal do
     IO.puts("""
 
     ==========================
-    1. Crear sala batalla
-    2. Crear sala intercambio
-    3. Unirse a sala
-    4. Perfil
-    5. Inventario
+    1. Crear sala de batalla
+    2. Crear sala de intercambio
+    3. Unirse a sala existente
+    4. Ver perfil
+    5. Ver inventario
     6. Cerrar sesión
     ==========================
     """)
 
     case IO.gets("> ") |> String.trim() do
-
       "1" ->
-        GestorSalas.crear_sala()
+        crear_sala_batalla()
         mostrar_menu()
 
       "2" ->
-        IO.puts("Creando sala de intercambio...")
+        crear_sala_intercambio()
         mostrar_menu()
 
       "3" ->
         unirse_sala()
+        mostrar_menu()
 
       "4" ->
-        IO.inspect(ProyectoPokemon.Servidor.ejecutar("perfil"))
+        ProyectoPokemon.Servidor.ejecutar("perfil")
+        |> mostrar_resultado()
+
         mostrar_menu()
 
       "5" ->
-        IO.inspect(ProyectoPokemon.Servidor.ejecutar("inventario"))
+        ProyectoPokemon.Servidor.ejecutar("inventario")
+        |> mostrar_resultado()
+
         mostrar_menu()
 
       "6" ->
         ProyectoPokemon.Servidor.ejecutar("salir")
-        IO.puts("Sesión cerrada")
+        |> mostrar_resultado()
+
+        IO.puts("\nSesión cerrada correctamente.\n")
 
       _ ->
+        IO.puts("\nOpción inválida. Intenta nuevamente.\n")
         mostrar_menu()
     end
   end
 
+  # =========================
+  # OPCIONES DEL MENÚ
+  # =========================
+
+  defp crear_sala_batalla do
+    case GestorSalas.crear_sala() do
+      {:ok, mensaje} ->
+        IO.puts("\n✅ #{mensaje}")
+        IO.puts("Recuerda: al crear una sala ya quedas dentro de ella.")
+        IO.puts("Comparte el ID de la sala con el otro jugador.\n")
+
+      {:error, mensaje} ->
+        IO.puts("\n❌ #{mensaje}\n")
+
+      otro ->
+        mostrar_resultado(otro)
+    end
+  end
+
+  defp crear_sala_intercambio do
+    IO.puts("\nFunción de sala de intercambio pendiente de implementar.\n")
+  end
+
+  defp unirse_sala do
+    id =
+      IO.gets("ID de sala: ")
+      |> String.trim()
+
+    ProyectoPokemon.Servidor.ejecutar("unirse_sala " <> id)
+    |> mostrar_resultado()
+  end
+
+  # =========================
+  # MOSTRAR SALAS
+  # =========================
+
   defp mostrar_salas_batalla do
-
-    salas = GestorSalas.listar_salas()
-
-    case salas do
+    case GestorSalas.listar_salas() do
       [] ->
         IO.puts("No hay salas disponibles")
 
-      _ ->
-        Enum.each(salas, fn sala ->
-          IO.puts("- Sala #{sala.id}")
-        end)
+      salas ->
+        Enum.each(salas, &mostrar_sala_batalla/1)
     end
+  end
+
+  defp mostrar_sala_batalla(%{
+         id: id,
+         jugadores: jugadores,
+         estado: estado,
+         tiempo_turno: tiempo_turno
+       }) do
+    IO.puts(
+      "- Sala #{id} | Jugadores: #{length(jugadores)}/2 | Estado: #{estado} | Turno: #{tiempo_turno}s"
+    )
+  end
+
+  defp mostrar_sala_batalla(sala) do
+    IO.inspect(sala)
   end
 
   defp mostrar_salas_intercambio do
     IO.puts("No hay salas de intercambio disponibles")
   end
 
-  defp unirse_sala do
+  # =========================
+  # MOSTRAR RESULTADOS
+  # =========================
 
-    id =
-      IO.gets("ID de sala: ")
-      |> String.trim()
-
-    IO.inspect(
-      ProyectoPokemon.Servidor.ejecutar("unirse_sala " <> id)
-    )
-
-    mostrar_menu()
+  defp mostrar_resultado({:ok, mensaje}) when is_binary(mensaje) do
+    IO.puts("\n✅ #{mensaje}\n")
   end
 
+  defp mostrar_resultado({:ok, datos}) do
+    IO.puts("\n✅ Operación realizada correctamente:\n")
+    IO.inspect(datos)
+  end
+
+  defp mostrar_resultado({:error, mensaje}) when is_binary(mensaje) do
+    IO.puts("\n❌ #{mensaje}\n")
+  end
+
+  defp mostrar_resultado(mensaje) when is_binary(mensaje) do
+    IO.puts("\n" <> mensaje)
+  end
+
+  defp mostrar_resultado(lista) when is_list(lista) do
+    Enum.each(lista, &IO.inspect/1)
+  end
+
+  defp mostrar_resultado(otro) do
+    IO.inspect(otro)
+  end
 end

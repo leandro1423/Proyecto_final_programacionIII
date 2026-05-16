@@ -1,5 +1,4 @@
 defmodule ProyectoPokemon.Cluster.Router do
-
   def nodo_batallas do
     Enum.random([
       :"batallas@127.0.0.1",
@@ -13,5 +12,4 @@ defmodule ProyectoPokemon.Cluster.Router do
       :"intercambios2@127.0.0.1"
     ])
   end
-
 end
