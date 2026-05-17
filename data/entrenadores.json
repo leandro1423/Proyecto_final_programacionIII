@@ -21,8 +21,8 @@
       "equipo_actual": null,
       "equipos": {},
       "inventario": [],
-      "monedas": 0,
-      "monedas_acumuladas": 0,
+      "monedas": 30,
+      "monedas_acumuladas": 30,
       "sobres_pendientes": [
         {
           "id": 402976,
@@ -101,8 +101,8 @@
       "equipo_actual": null,
       "equipos": {},
       "inventario": [],
-      "monedas": 600,
-      "monedas_acumuladas": 1300,
+      "monedas": 700,
+      "monedas_acumuladas": 1400,
       "sobres_pendientes": [
         {
           "id": 487700,
@@ -110,7 +110,7 @@
         }
       ],
       "usuario": "leandro",
-      "victorias": 6
+      "victorias": 7
     },
     {
       "clave": "pikachu",

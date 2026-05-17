@@ -100,9 +100,21 @@ defmodule ProyectoPokemon.MenuBatalla do
     mostrar_batalla(sala, usuario)
   end
 
-  defp manejar_opcion("3", _sala, _usuario) do
-    IO.puts("\nAbandonaste la batalla")
+  defp manejar_opcion("3", sala, _usuario) do
+
+  case ProyectoPokemon.GestorSalas.salir_sala(sala.id) do
+
+    {:ok, mensaje} ->
+
+      IO.puts("\n#{mensaje}")
+
+    {:error, motivo} ->
+
+      IO.puts("\n#{motivo}")
   end
+
+  esperar()
+end
 
   defp manejar_opcion(_, sala, usuario) do
     IO.puts("\nOpcion invalida")
