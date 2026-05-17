@@ -1,6 +1,240 @@
 {
   "entrenadores": [
     {
+      "clave": "258",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [
+        {
+          "ataque": 57,
+          "defensa": 26,
+          "dueno_original": "carlooos",
+          "especie": "Diglett",
+          "factor_rareza": 4,
+          "hp_actual": 10,
+          "hp_max": 10,
+          "id": 444856,
+          "movimientos": [
+            {
+              "nombre": "Hueso Palo",
+              "potencia": 65,
+              "tipo": "Tierra"
+            },
+            {
+              "nombre": "Excavar",
+              "potencia": 80,
+              "tipo": "Tierra"
+            },
+            {
+              "nombre": "Rayo Burbuja",
+              "potencia": 65,
+              "tipo": "Agua"
+            },
+            {
+              "nombre": "Impactrueno",
+              "potencia": 40,
+              "tipo": "Eléctrico"
+            }
+          ],
+          "rareza": "comun",
+          "tipos": [
+            "Tierra"
+          ],
+          "velocidad": 99
+        },
+        {
+          "ataque": 56,
+          "defensa": 61,
+          "dueno_original": "carlooos",
+          "especie": "Oddish",
+          "factor_rareza": 11,
+          "hp_actual": 50,
+          "hp_max": 50,
+          "id": 381027,
+          "movimientos": [
+            {
+              "nombre": "Látigo Cepa",
+              "potencia": 45,
+              "tipo": "Planta"
+            },
+            {
+              "nombre": "Lodo Negro",
+              "potencia": 65,
+              "tipo": "Veneno"
+            },
+            {
+              "nombre": "Polvo Hielo",
+              "potencia": 40,
+              "tipo": "Hielo"
+            },
+            {
+              "nombre": "Hoja Afilada",
+              "potencia": 90,
+              "tipo": "Planta"
+            }
+          ],
+          "rareza": "raro",
+          "tipos": [
+            "Planta",
+            "Veneno"
+          ],
+          "velocidad": 33
+        },
+        {
+          "ataque": 83,
+          "defensa": 104,
+          "dueno_original": "carlooos",
+          "especie": "Geodude",
+          "factor_rareza": 4,
+          "hp_actual": 42,
+          "hp_max": 42,
+          "id": 174939,
+          "movimientos": [
+            {
+              "nombre": "Roca Afilada",
+              "potencia": 50,
+              "tipo": "Roca"
+            },
+            {
+              "nombre": "Tierra Viva",
+              "potencia": 90,
+              "tipo": "Tierra"
+            },
+            {
+              "nombre": "Bomba Germen",
+              "potencia": 80,
+              "tipo": "Planta"
+            },
+            {
+              "nombre": "Corte",
+              "potencia": 50,
+              "tipo": "Normal"
+            }
+          ],
+          "rareza": "comun",
+          "tipos": [
+            "Roca",
+            "Tierra"
+          ],
+          "velocidad": 21
+        }
+      ],
+      "monedas": 0,
+      "monedas_acumuladas": 0,
+      "sobres_pendientes": [],
+      "usuario": "carlooos",
+      "victorias": 0
+    },
+    {
+      "clave": "258",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 0,
+      "monedas_acumuladas": 0,
+      "sobres_pendientes": [],
+      "usuario": "reina",
+      "victorias": 0
+    },
+    {
+      "clave": "456",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 0,
+      "monedas_acumuladas": 0,
+      "sobres_pendientes": [],
+      "usuario": "diana",
+      "victorias": 0
+    },
+    {
+      "clave": "147",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 0,
+      "monedas_acumuladas": 0,
+      "sobres_pendientes": [],
+      "usuario": "lea",
+      "victorias": 0
+    },
+    {
+      "clave": "159",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 0,
+      "monedas_acumuladas": 0,
+      "sobres_pendientes": [],
+      "usuario": "ortegon",
+      "victorias": 0
+    },
+    {
+      "clave": "159",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 0,
+      "monedas_acumuladas": 0,
+      "sobres_pendientes": [],
+      "usuario": "lopez",
+      "victorias": 0
+    },
+    {
+      "clave": "147",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 0,
+      "monedas_acumuladas": 0,
+      "sobres_pendientes": [],
+      "usuario": "rey",
+      "victorias": 0
+    },
+    {
+      "clave": "123",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 0,
+      "monedas_acumuladas": 0,
+      "sobres_pendientes": [],
+      "usuario": "leandroo",
+      "victorias": 0
+    },
+    {
+      "clave": "123",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 0,
+      "monedas_acumuladas": 0,
+      "sobres_pendientes": [
+        {
+          "id": 764856,
+          "tipo": "basico"
+        }
+      ],
+      "usuario": "leandrooo",
+      "victorias": 0
+    },
+    {
+      "clave": "1",
+      "equipo_actual": null,
+      "equipos": {},
+      "inventario": [],
+      "monedas": 0,
+      "monedas_acumuladas": 0,
+      "sobres_pendientes": [
+        {
+          "id": 784296,
+          "tipo": "basico"
+        }
+      ],
+      "usuario": "1",
+      "victorias": 0
+    },
+    {
       "clave": "123",
       "equipo_actual": null,
       "equipos": {},
@@ -23,12 +257,7 @@
       "inventario": [],
       "monedas": 30,
       "monedas_acumuladas": 30,
-      "sobres_pendientes": [
-        {
-          "id": 402976,
-          "tipo": "basico"
-        }
-      ],
+      "sobres_pendientes": [],
       "usuario": "michael",
       "victorias": 0
     },
@@ -103,12 +332,7 @@
       "inventario": [],
       "monedas": 700,
       "monedas_acumuladas": 1400,
-      "sobres_pendientes": [
-        {
-          "id": 487700,
-          "tipo": "basico"
-        }
-      ],
+      "sobres_pendientes": [],
       "usuario": "leandro",
       "victorias": 7
     },

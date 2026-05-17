@@ -3,7 +3,8 @@ defmodule ProyectoPokemon.MenuPrincipal do
   alias ProyectoPokemon.{
     GestorSalas,
     GestorEntrenadores,
-    MenuBatalla
+    MenuBatalla,
+    MenuInventario
   }
 
   # =========================
@@ -76,12 +77,8 @@ defmodule ProyectoPokemon.MenuPrincipal do
         mostrar_menu()
 
       "5" ->
-        ProyectoPokemon.Servidor.ejecutar("inventario")
-        |> mostrar_resultado()
-
-        pausar()
+        MenuInventario.iniciar()
         mostrar_menu()
-
       "6" ->
         ProyectoPokemon.Servidor.ejecutar("salir")
         |> mostrar_resultado()
